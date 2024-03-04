@@ -1,0 +1,12 @@
+[package]
+name          = "ldpc-rs"
+version       = "0.1.0"
+edition       = "2021"
+authors       = ["Philippe Menuet Tang <philippe@ouicloud.software>"]
+description   = "Encoders and decoders for CCSDS LDPC error correcting codes"
+keywords      = ["ldpc", "no_std"]
+categories    = ["ecc", "encoding", "no-std"]
+license       = "MIT OR Apache-2.0"
+readme        = "README.md"
+repository    = "https://github.com/OuiCloud/ldpc-rs"
+documentation = "https://docs.rs/ldpc-rs"
