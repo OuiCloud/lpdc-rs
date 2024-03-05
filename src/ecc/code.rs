@@ -62,7 +62,7 @@ impl<const K: usize, const N: usize> ECC<K, N> {
     }
 
     /// Sum of the parity check matrix (number of parity check edges).
-    #[inline]
+    #[inline(always)]
     #[must_use]
     pub const fn paritycheck_sum(&self) -> usize {
         (K + 7 * (N - K) / 8) * 4
@@ -70,7 +70,7 @@ impl<const K: usize, const N: usize> ECC<K, N> {
 
     /// Length of the working area required for the message-passing decoder.
     /// Equal to 2 * paritycheck_sum + 3*n + 3*p - 2*k
-    #[inline]
+    #[inline(always)]
     #[must_use]
     pub const fn decode_working_len(&self) -> usize {
         2 * self.paritycheck_sum() + 3 * N + 3 * self.punctured_bits() - 2 * N
@@ -78,7 +78,7 @@ impl<const K: usize, const N: usize> ECC<K, N> {
 
     /// Length of the u8 working area required for the message-passing decoder.
     /// Equal to (n + punctured_bits - k)/8.
-    #[inline]
+    #[inline(always)]
     #[must_use]
     pub const fn decode_ms_working_u8_len(&self) -> usize {
         (N + self.punctured_bits() - K) / 8
@@ -86,13 +86,15 @@ impl<const K: usize, const N: usize> ECC<K, N> {
 
     /// Length of output required from any decoder.
     /// Equal to (n+punctured_bits)/8.
-    #[inline]
+    #[inline(always)]
     #[must_use]
     pub const fn output_len(&self) -> usize {
         (N + self.punctured_bits()) / 8
     }
 
     /// Get a  reference to the generator matrix for this code
+    #[inline(always)]
+    #[must_use]
     pub const fn compact_generator(&self) -> &[u64] {
         match self.code {
             Code::TM1280 => &TM1280_G,
