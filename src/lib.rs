@@ -7,3 +7,7 @@
 //! Pure Rust implemention of a selection of LDPC error correcting codes.
 //!
 //! It has no dependency neither `std`.
+
+pub mod ecc;
+
+pub use ecc::*;
